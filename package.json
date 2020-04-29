@@ -2,9 +2,11 @@
   "name": "po-reservation-box",
   "version": "1.0.0",
   "description": "The reservation component of Project Overnight.",
-  "main": "index.js",
+  "main": "./server/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start:dev": "webpack",
+    "server": "nodemon server"
   },
   "repository": {
     "type": "git",
@@ -18,17 +20,23 @@
   },
   "homepage": "https://github.com/Implausibility/po-reservation-box#readme",
   "dependencies": {
+    "airbnb-browser-shims": "^3.3.0",
     "mongoose": "^5.9.10",
     "mysql2": "^2.1.0",
     "react": "^16.13.1",
-    "react-dom": "^16.13.1",
-    "webpack": "^4.43.0"
+    "react-dom": "^16.13.1"
   },
   "devDependencies": {
     "@babel/cli": "^7.8.4",
     "@babel/core": "^7.9.0",
     "@babel/preset-env": "^7.9.5",
     "@babel/preset-react": "^7.9.4",
-    "jest": "^25.5.0"
+    "babel-preset-airbnb": "^5.0.0",
+    "eslint": "^6.8.0",
+    "eslint-plugin-react": "^7.19.0",
+    "eslint-plugin-react-hooks": "^3.0.0",
+    "jest": "^25.5.0",
+    "nodemon": "^2.0.3",
+    "webpack": "^4.43.0"
   }
 }
