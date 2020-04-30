@@ -5,8 +5,9 @@
   "main": "./server/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start:dev": "webpack",
-    "server": "nodemon server"
+    "seed": "",
+    "build": "webpack",
+    "start": "nodemon server"
   },
   "repository": {
     "type": "git",
@@ -14,15 +15,16 @@
   },
   "keywords": [],
   "author": "",
-  "license": "ISC",
+  "license": "NONE",
   "bugs": {
     "url": "https://github.com/Implausibility/po-reservation-box/issues"
   },
   "homepage": "https://github.com/Implausibility/po-reservation-box#readme",
   "dependencies": {
     "airbnb-browser-shims": "^3.3.0",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
     "mongoose": "^5.9.10",
-    "mysql2": "^2.1.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1"
   },
@@ -35,6 +37,7 @@
     "eslint": "^6.8.0",
     "eslint-plugin-react": "^7.19.0",
     "eslint-plugin-react-hooks": "^3.0.0",
+    "faker": "^4.1.0",
     "jest": "^25.5.0",
     "nodemon": "^2.0.3",
     "webpack": "^4.43.0"
