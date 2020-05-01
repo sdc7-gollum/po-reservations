@@ -1,12 +1,15 @@
 const path = require('path');
+const webpack = require("webpack");
 
 module.exports = {
   mode: "development",
-  entry: "./client",
+  entry: path.join(__dirname, "client", "Reservation.jsx"),
   output: {
-    path: path.resolve(__dirname, "public"),
+    path: path.resolve(__dirname, "public/"),
+    publicPath: "/public",
     filename: "bundle.js"
   },
+  // resolve: {extensions: ["*", ".js", ".jsx"]},
   module: {
     rules: [
       {
@@ -14,16 +17,29 @@ module.exports = {
         include: [
           path.resolve(__dirname, "client")
         ],
+        exclude: [
+          path.resolve(__dirname, "node_modules")
+        ],
         loader: "babel-loader",
         options: {
-          presets: ["es2015"]
-        }
-      }
-    ]
+          presets: [
+            "@babel/preset-react",
+            "@babel/preset-env",
+            "airbnb"
+          ],
+        },
+      },
+    ],
   },
+  // devServer: {
+  //   contentBase: path.join(__dirname, "public/"),
+  //   port: 3000,
+  //   publicPath: "http://localhost:9001/",
+  //   hotOnly: true
+  // },
   devtool: "inline-source-map",
   watch: true,
-  externals: {
-    react: 'react'
-  }
-}
+  // externals: {
+  //   react: 'react'
+  // }
+};
