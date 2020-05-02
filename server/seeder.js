@@ -99,33 +99,23 @@ const seed = () => {
     .then((dummyData) => {
       let counter = 1;
       return dummyData.map((item) => {
-        item.id = counter;
+        const idItem = item;
+        idItem.id = counter;
         counter += 1;
-        return item;
+        return idItem;
       });
     })
     .then((seedData) => {
-      const sprouts = [];
-      for (let i = 0; i < 100; i += 1) {
-        const pod = () => Room.create(seedData[i]);
-        sprouts.push(pod());
-      }
-      return sprouts;
-    })
-    .then((sprouts) => {
-      Promise.all(sprouts)
-        .then(() => {
-          db.close()
-            .then(() => {
-              console.log('Seeding complete. Connection closed.');
-            });
-        })
-        .catch((err) => {
-          db.close()
-            .then(() => {
-              console.log('Failed to seed:', err);
-            });
-        });
+      Room.insertMany(seedData, (err) => {
+        if (err) {
+          console.error('Error seeding data!', err);
+          return;
+        }
+        db.close()
+          .then(() => {
+            console.log('Seeding complete. Connection closed.');
+          });
+      });
     })
     .catch((err) => {
       console.log('Promise resolution error:', err);
