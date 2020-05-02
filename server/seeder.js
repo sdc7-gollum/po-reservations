@@ -92,9 +92,7 @@ const Room = mongoose.model('Room', roomSchema);
 const seed = () => {
   const seedPromises = [];
   for (let i = 0; i < 100; i += 1) {
-    const newSeed = () => {
-      return jsf.resolve(fakeSchema);
-    };
+    const newSeed = () => jsf.resolve(fakeSchema);
     seedPromises.push(newSeed());
   }
   Promise.all(seedPromises)
@@ -109,9 +107,7 @@ const seed = () => {
     .then((seedData) => {
       const sprouts = [];
       for (let i = 0; i < 100; i += 1) {
-        const pod = () => {
-          return Room.create(seedData[i]);
-        };
+        const pod = () => Room.create(seedData[i]);
         sprouts.push(pod());
       }
       return sprouts;
@@ -121,7 +117,7 @@ const seed = () => {
         .then(() => {
           db.close()
             .then(() => {
-              console.log('Seeding complete. Connection closed.')
+              console.log('Seeding complete. Connection closed.');
             });
         })
         .catch((err) => {

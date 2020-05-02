@@ -1,7 +1,7 @@
+/* eslint-disable no-console */
+
 require('dotenv').config();
 const mongoose = require('mongoose');
-
-/* eslint-disable no-console */
 
 mongoose.connect(`mongodb://${process.env.DB_HOST}:${process.env.DB_PORT}/fec`, {
   useNewUrlParser: true,
