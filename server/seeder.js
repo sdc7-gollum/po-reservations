@@ -91,6 +91,7 @@ const roomSchema = {
   id: {
     type: Number,
     index: true,
+    unique: true,
   },
   price: Number,
   cleaning: Number,
@@ -103,9 +104,21 @@ const roomSchema = {
 const Room = mongoose.model('Room', roomSchema);
 const db = mongoose.connection;
 
-const seed = () => {
+const deposit = (seedData) => {
+  Room.insertMany(seedData, (err) => {
+    if (err) {
+      console.error('Error seeding data!', err);
+    }
+    db.close()
+      .then(() => {
+        console.log('Seeding complete. Connection closed.');
+      });
+  });
+};
+
+const generate = (quantity) => {
   const seedPromises = [];
-  for (let i = 0; i < 100; i += 1) {
+  for (let i = 0; i < quantity; i += 1) {
     const newSeed = () => jsf.resolve(fakeSchema);
     seedPromises.push(newSeed());
   }
@@ -121,15 +134,7 @@ const seed = () => {
       });
     })
     .then((seedData) => {
-      Room.insertMany(seedData, (err) => {
-        if (err) {
-          console.error('Error seeding data!', err);
-        }
-        db.close()
-          .then(() => {
-            console.log('Seeding complete. Connection closed.');
-          });
-      });
+      return seedData;
     })
     .catch((err) => {
       console.log('Promise resolution error:', err);
@@ -147,6 +152,9 @@ db.once('open', () => {
       console.log('Error dropping collection:', err);
     })
     .finally(() => {
-      seed();
+      generate(100)
+        .then((data) => {
+          deposit(data);
+        });
     });
 });
