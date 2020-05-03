@@ -11,6 +11,17 @@ jsf.extend('faker', () => faker); // Saved for work on the date array
 const fakeSchema = {
   type: 'object',
   properties: {
+    // reviewScore: {
+    //   type: 'number',
+    //   minimum: 1,
+    //   maximum: 5,
+    //   precision: 100,
+    // },
+    reviews: {
+      type: 'integer',
+      minimum: 0,
+      maximum: 550,
+    },
     price: {
       type: 'integer',
       minimum: 108,
@@ -62,6 +73,8 @@ const fakeSchema = {
     'service',
     'tax',
     'maxGuests',
+    'reviews',
+    'reviewScore',
     // 'blackouts',
   ],
 };
