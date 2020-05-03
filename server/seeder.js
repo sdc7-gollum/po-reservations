@@ -74,7 +74,7 @@ const fakeSchema = {
     'tax',
     'maxGuests',
     'reviews',
-    'reviewScore',
+    // 'reviewScore',
     // 'blackouts',
   ],
 };
@@ -115,6 +115,7 @@ const seed = () => {
       return dummyData.map((item) => {
         const idItem = item;
         idItem.id = counter;
+        idItem.reviewScore = (Math.random() * 4 + 1).toPrecision(3);
         counter += 1;
         return idItem;
       });
