@@ -1,11 +1,12 @@
+/* eslint-disable no-console */
+
 require('dotenv').config();
 const mongoose = require('mongoose');
 const jsf = require('json-schema-faker');
 const faker = require('faker');
-/* eslint-disable no-console */
-jsf.extend('faker', () => faker);
 
-// const { db, Room } = require('./database.js');
+jsf.extend('faker', () => faker); // Saved for work on the date array
+
 
 const fakeSchema = {
   type: 'object',
@@ -48,7 +49,7 @@ const fakeSchema = {
     //     format: 'date',
     //     // faker: 'date.future(1)',
     //   },
-    // }, I'm going to come back to make the date list work
+    // },
     // dateTest: { /
     //   type: 'string',
     //   format: 'date',
@@ -73,8 +74,6 @@ mongoose.connect(`mongodb://${process.env.DB_HOST}:${process.env.DB_PORT}/fec`, 
     console.error.bind(console, 'connection error:', err);
   });
 
-const db = mongoose.connection;
-
 const roomSchema = {
   id: {
     type: Number,
@@ -87,7 +86,9 @@ const roomSchema = {
   maxGuests: Number,
   // blackouts: [Date],
 };
+
 const Room = mongoose.model('Room', roomSchema);
+const db = mongoose.connection;
 
 const seed = () => {
   const seedPromises = [];
@@ -99,33 +100,22 @@ const seed = () => {
     .then((dummyData) => {
       let counter = 1;
       return dummyData.map((item) => {
-        item.id = counter;
+        const idItem = item;
+        idItem.id = counter;
         counter += 1;
-        return item;
+        return idItem;
       });
     })
     .then((seedData) => {
-      const sprouts = [];
-      for (let i = 0; i < 100; i += 1) {
-        const pod = () => Room.create(seedData[i]);
-        sprouts.push(pod());
-      }
-      return sprouts;
-    })
-    .then((sprouts) => {
-      Promise.all(sprouts)
-        .then(() => {
-          db.close()
-            .then(() => {
-              console.log('Seeding complete. Connection closed.');
-            });
-        })
-        .catch((err) => {
-          db.close()
-            .then(() => {
-              console.log('Failed to seed:', err);
-            });
-        });
+      Room.insertMany(seedData, (err) => {
+        if (err) {
+          console.error('Error seeding data!', err);
+        }
+        db.close()
+          .then(() => {
+            console.log('Seeding complete. Connection closed.');
+          });
+      });
     })
     .catch((err) => {
       console.log('Promise resolution error:', err);
@@ -141,10 +131,8 @@ db.once('open', () => {
   mongoose.connection.db.dropCollection('rooms')
     .catch((err) => {
       console.log('Error dropping collection:', err);
-      seed();
     })
-    .then(() => {
-      // Database insertion
+    .finally(() => {
       seed();
     });
 });
