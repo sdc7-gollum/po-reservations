@@ -17,7 +17,10 @@ const roomSchema = {
   id: {
     type: Number,
     index: true,
+    unique: true,
   },
+  reviewScore: Number,
+  reviews: Number,
   price: Number,
   cleaning: Number,
   service: Number,
