@@ -7,7 +7,6 @@ const faker = require('faker');
 
 jsf.extend('faker', () => faker); // Saved for work on the date array
 
-
 const fakeSchema = {
   type: 'object',
   properties: {
@@ -133,9 +132,6 @@ const generate = (quantity) => {
         return idItem;
       });
     })
-    .then((seedData) => {
-      return seedData;
-    })
     .catch((err) => {
       console.log('Promise resolution error:', err);
     });
@@ -153,8 +149,11 @@ db.once('open', () => {
     })
     .finally(() => {
       generate(100)
-        .then((data) => {
-          deposit(data);
-        });
+        .then((data) => deposit(data));
     });
 });
+
+module.exports = {
+  generate,
+  deposit,
+};
