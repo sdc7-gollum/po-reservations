@@ -24,20 +24,10 @@ module.exports = {
   plugins: [
     'react',
     'react-hooks',
+    'jsx-a11y',
   ],
   rules: {
     "react-hooks/rules-of-hooks": "error",
     "react-hooks/exhaustive-deps": "warn",
   },
-  // globals: {
-  //   "useState": "readonly",
-  //   "useEffect": "readonly",
-  //   "useContext": "readonly",
-  //   "useReducer": "readonly",
-  //   "useMemo": "readonly",
-  //   "useRef": "readonly",
-  //   "useImperativeHandle": "readonly",
-  //   "useLayoutEffect": "readonly",
-  //   "useDebugValue": "readonly",
-  // }
 };
