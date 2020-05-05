@@ -1,7 +1,17 @@
 const path = require('path');
-const webpack = require("webpack");
+require('dotenv').config();
+// const webpack = require('webpack');
+const postcssNormalize = require('postcss-normalize');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const devMode = process.env.NODE_ENV !== 'production';
 
 module.exports = {
+  plugins: [
+    new MiniCssExtractPlugin({
+      filename: devMode ? '[name].css' : '[name].[hash].css',
+      chunkFileName: devMode ? '[id].css' : '[name].[hash].css',
+    }),
+  ],
   mode: "development",
   entry: path.join(__dirname, "client", "Reservation.jsx"),
   output: {
@@ -9,7 +19,6 @@ module.exports = {
     publicPath: "/public",
     filename: "bundle.js"
   },
-  // resolve: {extensions: ["*", ".js", ".jsx"]},
   module: {
     rules: [
       {
@@ -29,6 +38,36 @@ module.exports = {
           ],
         },
       },
+      {
+        test: /\.(sa|sc|c)ss$/i,
+        exclude: /node_modules/,
+        use: [
+          {
+            loader: MiniCssExtractPlugin.loader,
+            options: {
+              esModule: true,
+              hmr: process.env.NODE_ENV === 'development',
+            },
+          },
+          {
+            loader: 'css-loader',
+            options: {
+              modules: true,
+              sourceMap: true,
+            },
+          },
+          {
+            loader: 'postcss-loader',
+            options: {
+              ident: 'postcss',
+              plugins: () => [
+                postcssNormalize()
+              ],
+            },
+          },
+          // 'style-loader',
+        ],
+      }
     ],
   },
   // devServer: {

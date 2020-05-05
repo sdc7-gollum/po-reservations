@@ -13,7 +13,6 @@ app.use(express.urlencoded());
 
 app.route('/api/room/:id')
   .get((req, res) => {
-    console.log('ID:', req.params.id);
     Room.find({ id: req.params.id }, (err, record) => {
       if (err) {
         console.log('Retrieval error:', err);
