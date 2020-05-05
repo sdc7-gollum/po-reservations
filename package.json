@@ -8,12 +8,13 @@
     "seed": "node server/seeder.js",
     "build": "webpack",
     "start": "nodemon --watch server",
-    "client": "webpack-dev-server --mode development"
+    "client": "webpack --mode development"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Implausibility/po-reservation-box.git"
   },
+  "browserslist": "last 2 versions",
   "keywords": [],
   "author": "",
   "license": "NONE",
@@ -23,6 +24,7 @@
   "homepage": "https://github.com/Implausibility/po-reservation-box#readme",
   "dependencies": {
     "airbnb-browser-shims": "^3.3.0",
+    "axios": "^0.19.2",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "faker": "^4.1.0",
@@ -47,7 +49,10 @@
     "eslint-plugin-react": "^7.19.0",
     "eslint-plugin-react-hooks": "^2.5.1",
     "jest": "^25.5.0",
+    "mini-css-extract-plugin": "^0.9.0",
     "nodemon": "^2.0.3",
+    "postcss-loader": "^3.0.0",
+    "postcss-normalize": "^9.0.0",
     "style-loader": "^1.2.1",
     "webpack": "^4.43.0",
     "webpack-cli": "^3.3.11"
