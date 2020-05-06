@@ -7,10 +7,20 @@ const faker = require('faker');
 
 jsf.extend('faker', () => faker); // Saved for work on the date array
 
-
 const fakeSchema = {
   type: 'object',
   properties: {
+    // reviewScore: {
+    //   type: 'number',
+    //   minimum: 1,
+    //   maximum: 5,
+    //   precision: 100,
+    // },
+    reviews: {
+      type: 'integer',
+      minimum: 0,
+      maximum: 550,
+    },
     price: {
       type: 'integer',
       minimum: 108,
@@ -62,6 +72,8 @@ const fakeSchema = {
     'service',
     'tax',
     'maxGuests',
+    'reviews',
+    // 'reviewScore',
     // 'blackouts',
   ],
 };
@@ -78,6 +90,7 @@ const roomSchema = {
   id: {
     type: Number,
     index: true,
+    unique: true,
   },
   price: Number,
   cleaning: Number,
@@ -90,9 +103,21 @@ const roomSchema = {
 const Room = mongoose.model('Room', roomSchema);
 const db = mongoose.connection;
 
-const seed = () => {
+const deposit = (seedData) => {
+  Room.insertMany(seedData, (err) => {
+    if (err) {
+      console.error('Error seeding data!', err);
+    }
+    db.close()
+      .then(() => {
+        console.log('Seeding complete. Connection closed.');
+      });
+  });
+};
+
+const generate = (quantity) => {
   const seedPromises = [];
-  for (let i = 0; i < 100; i += 1) {
+  for (let i = 0; i < quantity; i += 1) {
     const newSeed = () => jsf.resolve(fakeSchema);
     seedPromises.push(newSeed());
   }
@@ -102,19 +127,9 @@ const seed = () => {
       return dummyData.map((item) => {
         const idItem = item;
         idItem.id = counter;
+        idItem.reviewScore = (Math.random() * 4 + 1).toPrecision(3);
         counter += 1;
         return idItem;
-      });
-    })
-    .then((seedData) => {
-      Room.insertMany(seedData, (err) => {
-        if (err) {
-          console.error('Error seeding data!', err);
-        }
-        db.close()
-          .then(() => {
-            console.log('Seeding complete. Connection closed.');
-          });
       });
     })
     .catch((err) => {
@@ -133,6 +148,12 @@ db.once('open', () => {
       console.log('Error dropping collection:', err);
     })
     .finally(() => {
-      seed();
+      generate(100)
+        .then((data) => deposit(data));
     });
 });
+
+module.exports = {
+  generate,
+  deposit,
+};
