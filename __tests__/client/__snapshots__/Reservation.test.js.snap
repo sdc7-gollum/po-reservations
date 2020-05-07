@@ -1,0 +1,3 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Reservation /> sans prop information should be the same as the snapshot 1`] = `"<div class=\\"wrapper\\"><div class=\\"container\\"><p id=\\"price\\"></p><form id=\\"form\\"><label for=\\"checkin\\">Check-In<input type=\\"date\\" placeholder=\\"Add date\\" id=\\"checkin\\"/></label><label for=\\"checkout\\">Checkout<input type=\\"date\\" placeholder=\\"Add date\\" id=\\"checkout\\"/></label><br/><label for=\\"guests\\">Guests<input type=\\"text\\" id=\\"guests\\" placeholder=\\"1 guest\\"/></label></form><button type=\\"submit\\" form=\\"form\\">Check availability</button></div></div>"`;

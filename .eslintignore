@@ -2,3 +2,4 @@ public/*
 webpack.config.js
 .babelrc
 jest.config.js
+setupTests.js

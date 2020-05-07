@@ -73,7 +73,7 @@ const fakeSchema = {
     'tax',
     'maxGuests',
     'reviews',
-    // 'reviewScore',
+    'reviewScore',
     // 'blackouts',
   ],
 };
@@ -97,6 +97,8 @@ const roomSchema = {
   service: Number,
   tax: Number,
   maxGuests: Number,
+  reviews: Number,
+  reviewScore: String,
   // blackouts: [Date],
 };
 
@@ -121,7 +123,7 @@ const generate = (quantity) => {
     const newSeed = () => jsf.resolve(fakeSchema);
     seedPromises.push(newSeed());
   }
-  Promise.all(seedPromises)
+  return Promise.all(seedPromises)
     .then((dummyData) => {
       let counter = 1;
       return dummyData.map((item) => {
@@ -141,15 +143,14 @@ db.on('error', console.error.bind(console, 'connection error:'));
 
 db.once('open', () => {
   console.log('Database connection opened!');
-  module.exports.db = db;
   // Wipe collection
-  mongoose.connection.db.dropCollection('rooms')
+  db.dropCollection('rooms')
+    .finally(async () => {
+      const seedData = await generate(100);
+      deposit(seedData);
+    })
     .catch((err) => {
       console.log('Error dropping collection:', err);
-    })
-    .finally(() => {
-      generate(100)
-        .then((data) => deposit(data));
     });
 });
 
