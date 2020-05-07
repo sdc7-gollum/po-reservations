@@ -19,7 +19,7 @@ const roomSchema = {
     index: true,
     unique: true,
   },
-  reviewScore: Number,
+  reviewScore: String,
   reviews: Number,
   price: Number,
   cleaning: Number,

@@ -1,6 +1,5 @@
 const path = require('path');
 require('dotenv').config();
-// const webpack = require('webpack');
 const postcssNormalize = require('postcss-normalize');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const devMode = process.env.NODE_ENV !== 'production';
@@ -13,7 +12,7 @@ module.exports = {
     }),
   ],
   mode: "development",
-  entry: path.join(__dirname, "client", "Reservation.jsx"),
+  entry: path.join(__dirname, "client", "App.jsx"),
   output: {
     path: path.resolve(__dirname, "public/"),
     publicPath: "/public",
@@ -65,20 +64,10 @@ module.exports = {
               ],
             },
           },
-          // 'style-loader',
         ],
       }
     ],
   },
-  // devServer: {
-  //   contentBase: path.join(__dirname, "public/"),
-  //   port: 3000,
-  //   publicPath: "http://localhost:9001/",
-  //   hotOnly: true
-  // },
   devtool: "inline-source-map",
   watch: true,
-  // externals: {
-  //   react: 'react'
-  // }
 };
