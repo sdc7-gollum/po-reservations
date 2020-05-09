@@ -1,19 +1,26 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-// eslint-disable-next-line no-unused-vars
-import regeneratorRuntime from 'regenerator-runtime';
+import Costs from './Components/Costs.jsx';
+import Button from './Components/Button.jsx';
+import Form from './Components/Form.jsx';
 import styles from './Reservation.css';
 
 class Reservation extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      maxGuests: 1,
+    };
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   async componentDidMount() {
-    const data = await this.fetchData();
-    this.setState(data);
+    try {
+      const data = await this.fetchData();
+      this.setState(data);
+    } catch (err) {
+      console.log(err);
+    }
   }
 
   // eslint-disable-next-line class-methods-use-this
@@ -30,71 +37,40 @@ class Reservation extends Component {
     e.preventDefault();
   }
 
-
   render() {
-    const { price } = this.state;
+    const { price, reviewScore, reviews } = this.state;
     return (
       <div className={styles.wrapper}>
         <div className={styles.container}>
-          <p id="price">{price}</p>
-          <form id="form" onSubmit={this.handleSubmit}>
-            <label htmlFor="checkin">
-              Check-In
-              <input type="date" placeholder="Add date" id="checkin" />
-            </label>
-            <label htmlFor="checkout">
-              Checkout
-              <input type="date" placeholder="Add date" id="checkout" />
-            </label>
-            <br />
-            <label htmlFor="guests">
-              Guests
-              <input type="text" id="guests" placeholder="1 guest" />
-            </label>
-          </form>
-          <button type="submit" form="form">Check availability</button>
+          <div className={styles.topRow}>
+            <div>
+              <span className={styles.price}>
+                ${price}&nbsp;
+              </span>
+              <span className={styles.diem}>
+                / night
+              </span>
+            </div>
+            <div>
+              <span className={styles.reviewWrapper}>
+                <span className={styles.star}>&#9733;</span>
+                <button className={styles.reviewButton} type="button">
+                  <span className={styles.rating}>{reviewScore} ({reviews})</span>
+                </button>
+              </span>
+            </div>
+          </div>
+          {/* <p id="price">{price}</p> */}
+          <Form data={this.state} handleSubmit={this.handleSubmit} />
+          <Button />
+          <div className={styles.nocharge}>
+            <p>You won&apos;t be charged yet</p>
+          </div>
+          <Costs data={this.state} />
         </div>
       </div>
     );
   }
 }
-
-
-// const Reservation = () => {
-//   const [room, setRoom] = useState([]);
-
-//   useEffect(() => {
-//     };
-//     fetchData();
-//   }, []);
-
-//   const handleSubmit = (e) => {
-//     e.preventDefault();
-//   };
-
-//   return (
-//     <div className={styles.wrapper}>
-//       <div className={styles.container}>
-//         <p>{room.price}</p>
-//         <form id="form" onSubmit={handleSubmit}>
-//           <label htmlFor="checkin">
-//             Check-In
-//             <input type="date" placeholder="Add date" id="checkin" />
-//           </label>
-//           <label htmlFor="checkout">
-//             Checkout
-//             <input type="date" placeholder="Add date" id="checkout" />
-//           </label>
-//           <br />
-//           <label htmlFor="guests">
-//             Guests
-//             <input type="text" id="guests" placeholder="1 guest" />
-//           </label>
-//         </form>
-//         <button type="submit" form="form">Check availability</button>
-//       </div>
-//     </div>
-//   );
-// };
 
 export default Reservation;
