@@ -14,10 +14,6 @@ class GuestDropdown extends React.Component {
     this.expanded = this.expanded.bind(this);
   }
 
-  clickHander(e) {
-
-  }
-
   expanded() {
     const {} = this.props;
     return (
