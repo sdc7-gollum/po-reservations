@@ -1,0 +1,21 @@
+* {
+  box-sizing: border-box;
+}
+
+.fee_lines {
+  display: block;
+  margin-block-start: 1em;
+  margin-block-end: 1em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+  padding-inline-start: 40px;
+}
+.left_item {
+  flex-shrink: 1;
+  flex-grow: 1;
+}
+
+.right_item {
+  padding-left: 16px;
+  white-space: nowrap;
+}

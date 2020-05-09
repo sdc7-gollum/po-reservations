@@ -1,0 +1,57 @@
+*, *:before, *:after {
+  box-sizing: border-box;
+}
+
+.guests_box {
+  background-color: transparent;
+  display: flex;
+  height: 56px;
+  padding-left: 12px;
+  padding-right: 36px;
+  padding-top: 26px;
+  padding-bottom: 10px;
+  border-radius: 12px;
+  box-shadow: 0px 6px 16px rgba(0, 0, 0, 0.12);
+  color: rgb(34, 34, 34);
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 20px;
+  cursor: pointer;
+  overflow: hidden;
+  white-space: nowrap;
+  margin: 0px;
+}
+
+.dropdown_outerwrap {
+  position: relative;
+  width: 100%;
+}
+
+.dropdown_innerwrap {
+  display: block;
+}
+
+.dropdown_container {
+  position: absolute;
+  width: 100%;
+  padding: 16px;
+  text-align: left;
+  margin-bottom: 16px;
+  min-width: 280px;
+  box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 6px, rgba(0, 0, 0, 0.07) 0px 0px 0px 1px;
+  z-index: 100;
+  left: 0px;
+  background: white;
+  border-radius: 4px;
+}
+
+.dropdown {
+  width: 100%;
+}
+
+.guestInfo {
+  color: rgb(111, 111, 111);
+  font-size: 14px;
+  margin-bottom: 16px;
+  line-height: 18px;
+}
