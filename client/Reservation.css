@@ -35,58 +35,6 @@ html {
   line-height: 20px;
 }
 
-.topRow {
-  display: flex;
-  justify-content: space-between;
-}
-
-.price {
-  font-weight: 600;
-  font-size: 20px;
-  line-height: 26px;
-}
-
-.diem {
-  padding-left: 4px;
-  white-space: nowrap;
-  font-size: 16px;
-  line-height: 20px;
-  font-weight: 400;
-}
-
-.reviewWrapper {
-  display: flex;
-  align-items: baseline;
-  font-size: 14px;
-  line-height: 18px;
-}
-
-.star {
-  cursor: default;
-  color: #FF385C;
-}
-
-.reviewButton {
-  display: block;
-  height: 100%;
-  width: 100%;
-  text-decoration: none;
-  cursor: pointer;
-  border-radius: 0px;
-  outline-style: none;
-  border-style: none;
-  padding: 0px;
-  margin: 0px;
-  background: transparent;
-}
-
-.rating {
-  color: rgb(113, 113, 113);
-  /* cursor: pointer; */
-  padding-left: 4px;
-}
-
-
 .nocharge {
   display: flex;
   justify-content: center;
