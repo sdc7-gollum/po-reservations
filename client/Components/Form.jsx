@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import { changeCheckin, changeCheckout } from '../store';
 import GuestDropdown from './GuestDropdown';
 import styles from './Form.css';
@@ -10,10 +11,11 @@ const mapDispatchToProps = {
 };
 
 const mapStateToProps = (state) => {
+  const { checkin, checkout } = state.dateReducer;
   let duration = 0;
-  if (state.checkin && state.checkout) {
-    const checkinDate = state.checkin.slice(-2);
-    const checkoutDate = state.checkout.slice(-2);
+  if (checkin && checkout) {
+    const checkinDate = checkin.slice(-2);
+    const checkoutDate = checkout.slice(-2);
     duration = Number.parseInt(checkoutDate, 10) - Number.parseInt(checkinDate, 10);
   }
   return { duration };
@@ -63,9 +65,9 @@ const ConnectedForm = (props) => {
   );
 };
 
+
 const Form = connect(
   mapStateToProps,
-  // null,
   mapDispatchToProps,
 )(ConnectedForm);
 

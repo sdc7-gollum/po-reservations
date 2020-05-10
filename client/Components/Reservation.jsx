@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import Costs from './Costs';
 import Form from './Form';
 import TopRow from './TopRow';
@@ -8,17 +9,13 @@ import { fetchData } from '../store';
 
 const mapStateToProps = (state) => {
   const { checkin, checkout } = state.dateReducer;
-  console.log('Redux state:', state);
   let duration = 0;
-  console.log(checkin);
-  console.log(checkout);
   if (checkin && checkout) {
     const checkinDate = checkin.slice(-2);
     const checkoutDate = checkout.slice(-2);
 
     duration = Number.parseInt(checkoutDate, 10) - Number.parseInt(checkinDate, 10);
   }
-  console.log(duration);
   const { room } = state.roomReducer;
   return { duration, room };
 };
