@@ -12,11 +12,14 @@ module.exports = {
     }),
   ],
   mode: "development",
-  entry: path.join(__dirname, "client", "App.jsx"),
+  entry: path.join(__dirname, "client", "index.js"),
   output: {
     path: path.resolve(__dirname, "public/"),
     publicPath: "/public",
     filename: "bundle.js"
+  },
+  resolve: {
+    extensions: ['.js', '.jsx', '.css']
   },
   module: {
     rules: [

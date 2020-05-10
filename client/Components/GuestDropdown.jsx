@@ -1,11 +1,20 @@
 import React from 'react';
 import styles from './GuestDropdown.css';
-import GuestItem from './GuestItem.jsx';
+import GuestItem from './GuestItem';
+
+// const mapStateToProps = (state) => {
+//   return {
+//     checkin: state.checkin,
+//     checkout: state.checkout,
+//   };
+// };
 
 class GuestDropdown extends React.Component {
   constructor(props) {
     super(props);
+    const { maxGuests } = this.props;
     this.state = {
+      max: maxGuests,
       adults: 1,
       children: 0,
       infants: 0,
@@ -15,7 +24,7 @@ class GuestDropdown extends React.Component {
   }
 
   expanded() {
-    const {} = this.props;
+    const { maxGuests } = this.props.data;
     return (
       <div className={styles.dropdown_outerwrap}>
         <div className={styles.dropdown_container}>
@@ -24,7 +33,8 @@ class GuestDropdown extends React.Component {
             <GuestItem guestType="Children" />
             <GuestItem guestType="Infants" />
             <div className={styles.guestInfo}>
-              2 guests maximum. Infants don&apos;t count toward the number of guests.
+              {maxGuests}
+              guests maximum. Infants don&apos;t count toward the number of guests.
             </div>
           </div>
         </div>
