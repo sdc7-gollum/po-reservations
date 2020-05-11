@@ -27,7 +27,7 @@ const ConnectedForm = (props) => {
     // const checkinDate = JSON.stringify(new Date(e.target.valueAsDate));
 
     const checkin = e.target.value;
-    props.changeCheckin(JSON.stringify(checkin));
+    props.changeCheckin(checkin);
     // Send action to Redux store to update checkin date
 
     // console.log(e.target.value);

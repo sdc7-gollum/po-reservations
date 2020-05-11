@@ -13,15 +13,20 @@ import GuestItem from './GuestItem';
 class GuestDropdown extends React.Component {
   constructor(props) {
     super(props);
-    const { maxGuests } = this.props;
     this.state = {
-      max: maxGuests,
       adults: 1,
       children: 0,
       infants: 0,
       expand: false, // false in production
     };
+    this.buttonHandler = this.buttonHandler.bind(this);
     this.expanded = this.expanded.bind(this);
+  }
+
+  buttonHandler(e) {
+    e.persist();
+    const expand = !this.state.expand;
+    this.setState({ expand });
   }
 
   expanded() {
@@ -35,7 +40,7 @@ class GuestDropdown extends React.Component {
             <GuestItem guestType="Infants" />
             <div className={styles.guestInfo}>
               {maxGuests}
-              guests maximum. Infants don&apos;t count toward the number of guests.
+              &nbsp;guests maximum. Infants don&apos;t count toward the number of guests.
             </div>
           </div>
         </div>
@@ -44,13 +49,17 @@ class GuestDropdown extends React.Component {
   }
 
   render() {
-    const { expand } = this.state;
+    const { adults, children, expand, infants } = this.state;
+    const { maxGuests } = this.props;
     return (
       <div>
         <div className={styles.guests_box}>
           <label htmlFor="guests">
-            Guests
-            <input type="text" id="guests" placeholder="1 guest" />
+            <button type="button" id="guests" onClick={this.buttonHandler}>
+              Guests:&nbsp;
+              {adults + children}
+              {infants ? ` and ${infants} infants` : ''}
+            </button>
           </label>
         </div>
         {expand ? this.expanded() : '' }
