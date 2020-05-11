@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import styles from './GuestDropdown.css';
 import GuestItem from './GuestItem';
 

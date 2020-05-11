@@ -12,10 +12,16 @@ const Costs = (props) => {
         <ul className={styles.fee_lines}>
           <li>
             <span className={styles.left_item}>
-              ${price} x {duration} night{duration > 1 ? 's' : ''}
+              $
+              {price}
+              &nbsp;x&nbsp;
+              {duration}
+              &nbsp;night
+              {duration > 1 ? 's' : ''}
             </span>
             <span className={styles.right_item}>
-              ${price * duration}
+              $
+              {price * duration}
             </span>
           </li>
           <li>
@@ -23,7 +29,8 @@ const Costs = (props) => {
               Cleaning fee
             </span>
             <span className={styles.right_item}>
-              ${cleaning}
+              $
+              {cleaning}
             </span>
           </li>
           <li>
@@ -31,7 +38,8 @@ const Costs = (props) => {
               Service fee
             </span>
             <span className={styles.right_item}>
-              ${service}
+              $
+              {service}
             </span>
           </li>
           <li>
@@ -39,7 +47,8 @@ const Costs = (props) => {
               Occupancy taxes and fees
             </span>
             <span className={styles.right_item}>
-              ${tax}
+              $
+              {tax}
             </span>
           </li>
         </ul>
@@ -47,6 +56,16 @@ const Costs = (props) => {
     );
   }
   return null;
+};
+
+Costs.propTypes = {
+  data: PropTypes.shape({
+    price: PropTypes.number.isRequired,
+    service: PropTypes.number.isRequired,
+    cleaning: PropTypes.number.isRequired,
+    tax: PropTypes.number.isRequired,
+  }).isRequired,
+  duration: PropTypes.number.isRequired,
 };
 
 export default Costs;

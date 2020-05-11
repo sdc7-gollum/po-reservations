@@ -65,6 +65,18 @@ const ConnectedForm = (props) => {
   );
 };
 
+ConnectedForm.propTypes = {
+  data: PropTypes.shape({
+    price: PropTypes.number.isRequired,
+    service: PropTypes.number.isRequired,
+    cleaning: PropTypes.number.isRequired,
+    tax: PropTypes.number.isRequired,
+  }).isRequired,
+  changeCheckin: PropTypes.func.isRequired,
+  changeCheckout: PropTypes.func.isRequired,
+  duration: PropTypes.number.isRequired,
+  handleSubmit: PropTypes.func.isRequired,
+};
 
 const Form = connect(
   mapStateToProps,

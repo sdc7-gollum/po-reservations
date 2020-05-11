@@ -1,3 +1,4 @@
+/* eslint-disable no-param-reassign */
 import { configureStore, createSlice } from '@reduxjs/toolkit';
 import axios from 'axios';
 
