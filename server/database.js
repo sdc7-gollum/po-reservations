@@ -26,8 +26,8 @@ const roomSchema = {
   service: Number,
   tax: Number,
   maxGuests: Number,
-  // blackouts: [Date],
 };
+
 const Room = mongoose.model('Room', roomSchema);
 
 db.on('error', console.error.bind(console, 'connection error:'));

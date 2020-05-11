@@ -1,6 +1,14 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import styles from './GuestDropdown.css';
-import GuestItem from './GuestItem.jsx';
+import GuestItem from './GuestItem';
+
+// const mapStateToProps = (state) => {
+//   return {
+//     checkin: state.checkin,
+//     checkout: state.checkout,
+//   };
+// };
 
 class GuestDropdown extends React.Component {
   constructor(props) {
@@ -11,15 +19,18 @@ class GuestDropdown extends React.Component {
       infants: 0,
       expand: false, // false in production
     };
+    this.buttonHandler = this.buttonHandler.bind(this);
     this.expanded = this.expanded.bind(this);
   }
 
-  clickHander(e) {
-
+  buttonHandler(e) {
+    e.persist();
+    const expand = !this.state.expand;
+    this.setState({ expand });
   }
 
   expanded() {
-    const {} = this.props;
+    const { maxGuests } = this.props.data;
     return (
       <div className={styles.dropdown_outerwrap}>
         <div className={styles.dropdown_container}>
@@ -28,7 +39,8 @@ class GuestDropdown extends React.Component {
             <GuestItem guestType="Children" />
             <GuestItem guestType="Infants" />
             <div className={styles.guestInfo}>
-              2 guests maximum. Infants don&apos;t count toward the number of guests.
+              {maxGuests}
+              &nbsp;guests maximum. Infants don&apos;t count toward the number of guests.
             </div>
           </div>
         </div>
@@ -37,13 +49,17 @@ class GuestDropdown extends React.Component {
   }
 
   render() {
-    const { expand } = this.state;
+    const { adults, children, expand, infants } = this.state;
+    const { maxGuests } = this.props;
     return (
       <div>
         <div className={styles.guests_box}>
           <label htmlFor="guests">
-            Guests
-            <input type="text" id="guests" placeholder="1 guest" />
+            <button type="button" id="guests" onClick={this.buttonHandler}>
+              Guests:&nbsp;
+              {adults + children}
+              {infants ? ` and ${infants} infants` : ''}
+            </button>
           </label>
         </div>
         {expand ? this.expanded() : '' }
