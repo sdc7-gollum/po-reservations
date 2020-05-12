@@ -32,14 +32,8 @@ class ConnectedReservation extends Component {
   }
 
   componentDidMount() {
-    const { fetchData } = this.props;
-    fetchData();
-    // try {
-    //   const data = await this.fetchData();
-    //   this.setState(data);
-    // } catch (err) {
-    //   console.log(err);
-    // }
+    const { fetchData: fetch } = this.props;
+    fetch();
   }
 
   handleSubmit(e) {
@@ -51,13 +45,15 @@ class ConnectedReservation extends Component {
   render() {
     const { duration, room } = this.props;
     console.log(duration);
-    // const { } = room;
     return (
       <div className={styles.wrapper}>
         <div className={styles.container}>
           <TopRow data={room} />
-          <Form data={room} duration={duration} handleSubmit={this.handleSubmit} />
-          {/* <Button handleSubmit={this.handleSubmit} /> */}
+          <Form
+            data={room}
+            duration={duration}
+            handleSubmit={this.handleSubmit}
+          />
           <div className={styles.nocharge}>
             { duration ? <p>You won&apos;t be charged yet</p> : ''}
           </div>
@@ -67,6 +63,17 @@ class ConnectedReservation extends Component {
     );
   }
 }
+
+ConnectedReservation.propTypes = {
+  room: PropTypes.shape({
+    price: PropTypes.number.isRequired,
+    service: PropTypes.number.isRequired,
+    cleaning: PropTypes.number.isRequired,
+    tax: PropTypes.number.isRequired,
+  }).isRequired,
+  duration: PropTypes.number.isRequired,
+  fetchData: PropTypes.func.isRequired,
+};
 
 const Reservation = connect(
   mapStateToProps,
