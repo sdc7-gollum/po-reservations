@@ -21,7 +21,17 @@ const dateSlice = createSlice({
 });
 
 const roomState = {
-  room: {},
+  room: {
+    price: 50,
+    reviewScore: 3.00,
+    reviews: 2,
+    cleaning: 20,
+    tax: 15,
+    id: 0,
+    service: 80,
+    maxGuests: 3,
+  },
+  error: null,
 };
 
 const roomData = createSlice({

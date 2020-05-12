@@ -3,15 +3,61 @@
 }
 
 .listItem {
-  display: flex;
-  flex-direction: row;
+  display: table;
+  /* flex-direction: row; */
   /* align-self: flex-end; */
   /* align-self: ; */
-  justify-content: space-around;
+  /* justify-content: space-around; */
+}
+
+.leftEnd {
+  width: 100%;
+  display: table-cell;
+  vertical-align: middle;
+}
+
+.operatorWrapper {
+  margin: 0px;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 1.375em;
+  color: #484848;
+  text-align: center;
 }
 
 .numberEntry {
-  justify-content: space-between;
+  display: table;
+  width: 120px;
+  /* box-shadow: var(--shadow-button-level0-box-shadow, none); */
+}
+
+.adjust {
+  height: var(--size-flat-button-size-small, 32px);
+  width: var(--size-flat-button-size-small, 32px);
+  display: inline-block;
+  cursor: pointer;
+  text-align: center;
+  line-height: 1;
+  position: relative;
+  touch-action: manipulation;
+  border-radius: 50%;
+  border-style: solid;
+  border-color: rgb(0, 132, 137);
+  border-width: 1px;
+  background: transparent;
+  padding: 1px 7px 2px;
+}
+
+.minus {
+  display: table-cell;
+  text-align: left;
+  vertical-align: middle;
+}
+
+.plus {
+  display: table-cell;
+  vertical-align: middle;
+  text-align: right;
 }
 
 #guestCounter {

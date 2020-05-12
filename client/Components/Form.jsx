@@ -56,7 +56,7 @@ const ConnectedForm = (props) => {
           Checkout
           <input type="date" onChange={onCheckoutChange} id="checkout" />
         </label>
-        <GuestDropdown duration={duration} data={data} />
+        <GuestDropdown duration={duration} maxGuests={data.maxGuests} />
       </form>
       <button className={styles.the_button} type="submit" onSubmit={handleSubmit} form="form">
         {duration ? 'Reserve' : 'Check availability'}
@@ -71,6 +71,7 @@ ConnectedForm.propTypes = {
     service: PropTypes.number.isRequired,
     cleaning: PropTypes.number.isRequired,
     tax: PropTypes.number.isRequired,
+    maxGuests: PropTypes.number.isRequired,
   }).isRequired,
   changeCheckin: PropTypes.func.isRequired,
   changeCheckout: PropTypes.func.isRequired,
