@@ -45,6 +45,7 @@ const ConnectedForm = (props) => {
   };
 
   const { duration, data, handleSubmit } = props;
+  const { maxGuests } = data;
   return (
     <div className={styles.formWrapper}>
       <form id="form" onSubmit={handleSubmit}>
@@ -56,7 +57,7 @@ const ConnectedForm = (props) => {
           Checkout
           <input type="date" onChange={onCheckoutChange} id="checkout" />
         </label>
-        <GuestDropdown duration={duration} maxGuests={data.maxGuests} />
+        <GuestDropdown duration={duration} maxGuests={maxGuests} />
       </form>
       <button className={styles.the_button} type="submit" onSubmit={handleSubmit} form="form">
         {duration ? 'Reserve' : 'Check availability'}
