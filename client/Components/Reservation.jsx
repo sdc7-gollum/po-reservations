@@ -24,6 +24,8 @@ const mapDispatchToProps = {
   fetchData,
 };
 
+
+
 class ConnectedReservation extends Component {
   constructor(props) {
     super(props);
@@ -33,7 +35,13 @@ class ConnectedReservation extends Component {
 
   componentDidMount() {
     const { fetchData: fetch } = this.props;
-    fetch();
+    const params = new URLSearchParams(window.location.search);
+    const record = Number.parseInt(params.toString(), 10);
+    if (record) {
+      fetch(Number.parseInt(params, 10));
+    } else {
+      console.error('No record associated with this URL.')
+    }
   }
 
   handleSubmit(e) {

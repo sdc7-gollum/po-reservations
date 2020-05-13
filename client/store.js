@@ -65,10 +65,10 @@ export default store;
 export const { changeCheckin, changeCheckout } = dateSlice.actions;
 export const { loadDataSuccess, loadDataFailure } = roomData.actions;
 
-export const fetchData = () => async (dispatch) => {
+export const fetchData = (record) => async (dispatch) => {
   let response;
   try {
-    response = await axios.get('/api/room/1');
+    response = await axios.get(`/api/room/${record}`);
   } catch (err) {
     dispatch(loadDataFailure(JSON.stringify(err)));
     console.log('Error in fetchData:', err);
