@@ -38,7 +38,7 @@ class ConnectedReservation extends Component {
     const params = new URLSearchParams(window.location.search);
     const record = Number.parseInt(params.toString(), 10);
     if (record) {
-      fetch(Number.parseInt(params, 10));
+      fetch(record);
     } else {
       console.error('No record associated with this URL.')
     }
