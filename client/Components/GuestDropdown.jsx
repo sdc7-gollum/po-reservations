@@ -101,7 +101,7 @@ class GuestDropdown extends React.Component {
     const { adults, children, infants } = this.state;
     return (
       <div className={styles.dropdown_outerwrap}>
-        <div className={styles.dropdown_container}>
+        <div className={styles.dropdown_}>
           <div className={styles.dropdown}>
             <GuestItem guestType="Adults" quant={adults} plus={this.adultsPlusHandler} minus={this.adultsMinusHandler} />
             <GuestItem guestType="Children" quant={children} plus={this.childrenPlusHandler} minus={this.childrenMinusHandler} />

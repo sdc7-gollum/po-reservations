@@ -24,8 +24,6 @@ const mapDispatchToProps = {
   fetchData,
 };
 
-
-
 class ConnectedReservation extends Component {
   constructor(props) {
     super(props);
@@ -46,13 +44,10 @@ class ConnectedReservation extends Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    e.persist();
-    console.log(e);
   }
 
   render() {
     const { duration, room } = this.props;
-    console.log(duration);
     return (
       <div className={styles.wrapper}>
         <div className={styles.container}>

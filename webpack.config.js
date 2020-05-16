@@ -11,7 +11,7 @@ module.exports = {
       chunkFileName: devMode ? '[id].css' : '[name].[hash].css',
     }),
   ],
-  mode: "development",
+  mode: process.env.NODE_ENV,
   entry: path.join(__dirname, "client", "index.js"),
   output: {
     path: path.resolve(__dirname, "public/"),
@@ -48,7 +48,6 @@ module.exports = {
             loader: MiniCssExtractPlugin.loader,
             options: {
               esModule: true,
-              hmr: process.env.NODE_ENV === 'development',
             },
           },
           {

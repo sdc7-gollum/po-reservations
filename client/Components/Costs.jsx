@@ -14,9 +14,9 @@ const Costs = (props) => {
         <span className={styles.left_item}>
           $
           {price}
-          &nbsp;x&nbsp;
+          {' '}x{' '}
           {duration}
-          &nbsp;night
+          {' '}night
           {duration > 1 ? 's' : ''}
         </span>
         <span className={styles.right_item}>
