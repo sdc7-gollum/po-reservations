@@ -70,6 +70,6 @@ module.exports = {
       }
     ],
   },
-  devtool: "inline-source-map",
-  watch: true,
+  devtool: "source-map",
+  // watch: true,
 };
