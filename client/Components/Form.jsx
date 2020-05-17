@@ -23,25 +23,15 @@ const mapStateToProps = (state) => {
 
 const ConnectedForm = (props) => {
   const onCheckinChange = (e) => {
-    e.persist();
-    // const checkinDate = JSON.stringify(new Date(e.target.valueAsDate));
-
     const checkin = e.target.value;
     props.changeCheckin(checkin);
     // Send action to Redux store to update checkin date
-
-    // console.log(e.target.value);
   };
   const onCheckoutChange = (e) => {
-    e.persist();
-    // const checkoutDate = JSON.stringify(new Date(e.target.valueAsDate));
-
     const checkout = e.target.value;
     props.changeCheckout(checkout);
     // Send action to Redux store to update checkout date
     // when both dates exist, subtract checkin DAY from checkout DAY and set it to "duration"
-
-    // console.log(e.target.valueAsDate);
   };
 
   const { duration, data, handleSubmit } = props;

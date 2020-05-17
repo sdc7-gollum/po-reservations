@@ -13,7 +13,6 @@ const mapStateToProps = (state) => {
   if (checkin && checkout) {
     const checkinDate = checkin.slice(-2);
     const checkoutDate = checkout.slice(-2);
-    console.log(checkinDate, checkoutDate);
     duration = Number.parseInt(checkoutDate, 10) - Number.parseInt(checkinDate, 10);
   }
   const { room } = state.roomReducer;
@@ -38,7 +37,7 @@ class ConnectedReservation extends Component {
     if (record) {
       fetch(record);
     } else {
-      console.error('No record associated with this URL.')
+      // console.error('No record associated with this URL.')
     }
   }
 

@@ -7,7 +7,6 @@ const Costs = (props) => {
   const {
     price, service, tax, cleaning,
   } = data;
-  console.log(props);
   if (duration) {
     return (
       <div className={styles.fee_lines}>
