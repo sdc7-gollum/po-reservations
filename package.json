@@ -6,7 +6,7 @@
   "scripts": {
     "test": "jest",
     "seed": "node server/seeder.js",
-    "build": "webpack",
+    "build": "webpack webpack.config.js",
     "start": "nodemon --watch server",
     "client": "webpack --mode development"
   },
