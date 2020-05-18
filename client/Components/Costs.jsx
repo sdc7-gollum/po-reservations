@@ -51,7 +51,8 @@ const Costs = (props) => {
             Total
           </span>
           <span className={styles.right_total}>
-            ${price * duration + tax + cleaning + service}
+            $
+            {price * duration + tax + cleaning + service}
           </span>
         </div>
       </div>
