@@ -122,19 +122,19 @@ class GuestDropdown extends React.Component {
     } = this.state;
     return (
       <div>
-        {/* <div className={styles.guests_box}> */}
-          {/* <label htmlFor="guests"> */}
-            <button type="button" className={styles.guests_box} onClick={this.buttonHandler}>
-              <div className={styles.text}>
-                Guests:
-                {` ${adults + children} guest`}
-                {(adults + children) > 1 ? 's' : ''}
-                {infants ? ` and ${infants} infant` : ''}
-                {infants > 1 ? 's' : ''}
-              </div>
-            </button>
-          {/* </label> */}
-        {/* </div> */}
+        <button type="button" className={styles.guests_box} onClick={this.buttonHandler}>
+          <div className={styles.text}>
+            <span>
+              Guests:
+            </span>
+            <span>
+              {` ${adults + children} guest`}
+              {(adults + children) > 1 ? 's' : ''}
+              {infants ? ` and ${infants} infant` : ''}
+              {infants > 1 ? 's' : ''}
+            </span>
+          </div>
+        </button>
         {expand ? this.expanded() : '' }
       </div>
     );

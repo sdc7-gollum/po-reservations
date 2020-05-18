@@ -9,35 +9,51 @@ const Costs = (props) => {
   } = data;
   if (duration) {
     return (
-      <div className={styles.fee_lines}>
-        <span className={styles.left_item}>
-          {`$${price} x ${duration} night${duration > 1 ? 's' : ''}`}
-        </span>
-        <span className={styles.right_item}>
-          $
-          {price * duration}
-        </span>
-        <span className={styles.left_item}>
-          Cleaning fee
-        </span>
-        <span className={styles.right_item}>
-          $
-          {cleaning}
-        </span>
-        <span className={styles.left_item}>
-          Service fee
-        </span>
-        <span className={styles.right_item}>
-          $
-          {service}
-        </span>
-        <span className={styles.left_item}>
-          Occupancy taxes and fees
-        </span>
-        <span className={styles.right_item}>
-          $
-          {tax}
-        </span>
+      <div className={styles.costContainer}>
+        <div className={styles.fee_lines}>
+          <span className={styles.left_item}>
+            {`$${price} x ${duration} night${duration > 1 ? 's' : ''}`}
+          </span>
+          <span className={styles.right_item}>
+            $
+            {price * duration}
+          </span>
+        </div>
+        <div className={styles.fee_lines}>
+          <span className={styles.left_item}>
+            Cleaning fee
+          </span>
+          <span className={styles.right_item}>
+            $
+            {cleaning}
+          </span>
+        </div>
+        <div className={styles.fee_lines}>
+          <span className={styles.left_item}>
+            Service fee
+          </span>
+          <span className={styles.right_item}>
+            $
+            {service}
+          </span>
+        </div>
+        <div className={styles.fee_lines}>
+          <span className={styles.left_item}>
+            Occupancy taxes and fees
+          </span>
+          <span className={styles.right_item}>
+            $
+            {tax}
+          </span>
+        </div>
+        <div className={styles.separator}>
+          <span className={styles.left_total}>
+            Total
+          </span>
+          <span className={styles.right_total}>
+            ${price * duration + tax + cleaning + service}
+          </span>
+        </div>
       </div>
     );
   }

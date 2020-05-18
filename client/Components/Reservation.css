@@ -15,9 +15,9 @@
 .wrapper {
   grid-column: 9 / span 4;
   /* position: absolute; */
-  top: 24px;
+  margin-top: 24px;
   /* margin-left: 45px; */
-  display: flex;
+  display: block;
   width: 100%;
   flex-direction: column;
   box-sizing: border-box;
@@ -25,7 +25,6 @@
 
 .container {
   display: flex;
-  align-self: flex-end;
   flex-direction: column;
   justify-content: space-around;
   padding: 8px 24px 24px;

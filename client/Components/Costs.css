@@ -2,21 +2,58 @@
   box-sizing: border-box;
 }
 
+.costContainer {
+  display: flex;
+  flex-direction: column;
+  font-size: 16px;
+}
+
 .fee_lines {
-  display: block;
-  margin-block-start: 1em;
-  margin-block-end: 1em;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-block-start: .3em;
+  margin-block-end: .3em;
   margin-inline-start: 0px;
   margin-inline-end: 0px;
-  padding-inline-start: 40px;
 }
 
 .left_item {
+  text-decoration: underline;
+  text-align: left;
   flex-shrink: 1;
   flex-grow: 1;
 }
 
 .right_item {
+  text-align: right;
   padding-left: 16px;
   white-space: nowrap;
+}
+
+.left_total {
+  font-weight: 800;;
+  text-align: left;
+  flex-shrink: 1;
+  flex-grow: 1;
+}
+
+.right_total {
+  font-weight: 800;
+  text-align: right;
+  padding-left: 16px;
+  white-space: nowrap;
+}
+
+.separator {
+  border-top: 1px solid rgb(221, 221, 221);
+  margin: 16px 0px 0px;
+  padding: 24px 0px 12px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  /* margin-block-start: 1em;
+  margin-block-end: 1em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px; */
 }
