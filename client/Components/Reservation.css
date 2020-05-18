@@ -4,15 +4,20 @@
 }
 
 .positioner {
-
+  max-width: 1280px;
+  display: grid;
+  margin-right: auto;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  grid-column-gap: 16px;
+  position: relative;
 }
 
 .wrapper {
-  position: absolute;
+  grid-column: 9 / span 4;
+  /* position: absolute; */
   top: 24px;
-  margin-left: 45px;
+  /* margin-left: 45px; */
   display: flex;
-  --page-shell-max-content-width: 1440px;
   width: 100%;
   flex-direction: column;
   box-sizing: border-box;

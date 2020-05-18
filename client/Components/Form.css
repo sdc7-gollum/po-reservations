@@ -5,7 +5,18 @@
 .formWrapper {
   display: flex;
   flex-direction: column;
+  width: 100%;
   /* align-items: baseline; */
+}
+
+.dateBox {
+  font-size: 12px;
+  display: flex;
+  justify-content: space-between;
+
+  /* display: flex;
+  flex-direction: row;
+  white-space: nowrap; */
 }
 
 .the_button {

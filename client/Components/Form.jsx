@@ -39,14 +39,16 @@ const ConnectedForm = (props) => {
   return (
     <div className={styles.formWrapper}>
       <form id="form" onSubmit={handleSubmit}>
-        <label htmlFor="checkin">
-          Check-In
-          <input type="date" onChange={onCheckinChange} id="checkin" />
-        </label>
-        <label htmlFor="checkout">
-          Checkout
-          <input type="date" onChange={onCheckoutChange} id="checkout" />
-        </label>
+        <div className={styles.dateBox}>
+          <label htmlFor="checkin">
+            Check-In:
+            <input type="date" onChange={onCheckinChange} id="checkin" />
+          </label>
+          <label htmlFor="checkout">
+            Checkout:
+            <input type="date" onChange={onCheckoutChange} id="checkout" />
+          </label>
+        </div>
         <GuestDropdown duration={duration} maxGuests={maxGuests} />
       </form>
       <button className={styles.the_button} type="submit" onSubmit={handleSubmit} form="form">

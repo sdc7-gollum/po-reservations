@@ -22,5 +22,4 @@ app.route('/api/room/:id')
     });
   });
 
-// app.listen(process.env.PORT, () => console.log(`Reservation listening at http://${process.env.HOST}:${process.env.PORT}`));
-app.listen(process.env.PORT);
+app.listen(process.env.PORT, () => console.log(`Reservation listening at http://${process.env.HOST}:${process.env.PORT}`));

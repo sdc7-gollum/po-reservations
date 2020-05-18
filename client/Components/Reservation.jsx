@@ -48,18 +48,20 @@ class ConnectedReservation extends Component {
   render() {
     const { duration, room } = this.props;
     return (
-      <div className={styles.wrapper}>
-        <div className={styles.container}>
-          <TopRow data={room} />
-          <Form
-            data={room}
-            duration={duration}
-            handleSubmit={this.handleSubmit}
-          />
-          <div className={styles.nocharge}>
-            { duration ? <p>You won&apos;t be charged yet</p> : ''}
+      <div className={styles.positioner}>
+        <div className={styles.wrapper}>
+          <div className={styles.container}>
+            <TopRow data={room} />
+            <Form
+              data={room}
+              duration={duration}
+              handleSubmit={this.handleSubmit}
+            />
+            <div className={styles.nocharge}>
+              { duration ? <p>You won&apos;t be charged yet</p> : ''}
+            </div>
+            <Costs data={room} duration={duration} />
           </div>
-          <Costs data={room} duration={duration} />
         </div>
       </div>
     );
