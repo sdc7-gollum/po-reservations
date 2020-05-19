@@ -1,6 +1,8 @@
 # Project Overnight
 
-> A front end, meticulously reconstructed.
+> A front end, reconstructed.
+
+
 
 ## Related Projects
 
