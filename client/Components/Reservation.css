@@ -13,7 +13,7 @@
 }
 
 .wrapper {
-  grid-column: 8 / span 4;
+  grid-column: 7 / span 4;
   /* position: absolute; */
   margin-top: 24px;
   /* margin-left: 45px; */
