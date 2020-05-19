@@ -17,9 +17,9 @@ const GuestItem = ({
           </div>
         </button>
       </div>
-      <span>
+      <div className={styles.quant}>
         {quant}
-      </span>
+      </div>
       <div className={styles.plus}>
         <button type="button" id="guestCounter" onClick={plus} className={styles.adjust}>
           <div className={styles.operatorWrapper}>

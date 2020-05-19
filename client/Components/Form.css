@@ -5,12 +5,26 @@
 .formWrapper {
   display: flex;
   flex-direction: column;
+  width: 100%;
   /* align-items: baseline; */
 }
 
+.dateBox {
+  font-size: 12px;
+  display: flex;
+  justify-content: space-between;
+
+  /* display: flex;
+  flex-direction: row;
+  white-space: nowrap; */
+}
+
 .the_button {
+  border-radius: 12px;
   font-size: 16px;
   font-weight: 600;
   padding: 14px 24px;
-  /* align-self: center; */
+  color: rgb(255, 255, 255);
+  background: rgb(10, 147, 157);
+  cursor: pointer;
 }

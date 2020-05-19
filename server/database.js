@@ -7,8 +7,8 @@ mongoose.connect(`mongodb://${process.env.DB_HOST}:${process.env.DB_PORT}/fec`, 
   useNewUrlParser: true,
   useUnifiedTopology: true,
 })
-  .catch((err) => {
-    console.error.bind(console, 'connection error:', err);
+  .catch(() => {
+    // console.error.bind(console, 'connection error:', err);
   });
 
 const db = mongoose.connection;
@@ -30,10 +30,10 @@ const roomSchema = {
 
 const Room = mongoose.model('Room', roomSchema);
 
-db.on('error', console.error.bind(console, 'connection error:'));
+// db.on('error', console.error.bind(console, 'connection error:'));
 
 db.once('open', () => {
-  console.log('Database connection opened!');
+  // console.log('Database connection opened!');
 });
 
 module.exports = {

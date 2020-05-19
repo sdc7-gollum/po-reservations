@@ -101,8 +101,8 @@ class GuestDropdown extends React.Component {
     const { adults, children, infants } = this.state;
     return (
       <div className={styles.dropdown_outerwrap}>
-        <div className={styles.dropdown_container}>
-          <div className={styles.dropdown}>
+        <div className={styles.dropdown_innerwrap}>
+          <div className={styles.dropdown_container}>
             <GuestItem guestType="Adults" quant={adults} plus={this.adultsPlusHandler} minus={this.adultsMinusHandler} />
             <GuestItem guestType="Children" quant={children} plus={this.childrenPlusHandler} minus={this.childrenMinusHandler} />
             <GuestItem guestType="Infants" quant={infants} plus={this.infantsPlusHandler} minus={this.infantsMinusHandler} />
@@ -122,18 +122,19 @@ class GuestDropdown extends React.Component {
     } = this.state;
     return (
       <div>
-        <div className={styles.guests_box}>
-          <label htmlFor="guests">
-            <button type="button" id="guests" onClick={this.buttonHandler}>
-              Guests:&nbsp;
-              {adults + children}
-              &nbsp;guest
+        <button type="button" className={styles.guests_box} onClick={this.buttonHandler}>
+          <div className={styles.text}>
+            <span>
+              Guests:
+            </span>
+            <span>
+              {` ${adults + children} guest`}
               {(adults + children) > 1 ? 's' : ''}
               {infants ? ` and ${infants} infant` : ''}
               {infants > 1 ? 's' : ''}
-            </button>
-          </label>
-        </div>
+            </span>
+          </div>
+        </button>
         {expand ? this.expanded() : '' }
       </div>
     );

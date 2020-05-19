@@ -5,7 +5,11 @@
 .guests_box {
   background-color: transparent;
   display: flex;
-  height: 56px;
+  height: 48px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
   padding-left: 12px;
   padding-right: 36px;
   padding-top: 26px;
@@ -20,6 +24,12 @@
   overflow: hidden;
   white-space: nowrap;
   margin: 0px;
+}
+
+.text {
+  margin: auto;
+  font-size: 14px;
+  text-align: center;
 }
 
 .dropdown_outerwrap {
@@ -45,13 +55,14 @@
   border-radius: 4px;
 }
 
-.dropdown {
-  width: 100%;
+.guestButton {
+  padding: 14px 14px;
 }
 
 .guestInfo {
   color: rgb(111, 111, 111);
   font-size: 14px;
+  margin: auto;
   margin-bottom: 16px;
   line-height: 18px;
 }
