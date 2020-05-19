@@ -12,29 +12,50 @@
 
 ## Table of Contents
 
-1. [Usage](#Usage)
-1. [Requirements](#requirements)
-1. [Development](#development)
+1. [Requirements](#Requirements)
+2. [Setup](#Setup)
+3. [Usage](#Usage)
+4. [Development](#Development)
 
-## Usage
-
-> Some usage instructions
 
 ## Requirements
 
-An `nvmrc` file is included if using [nvm](https://github.com/creationix/nvm).
+A recent version of npm.
 
-- Node 6.13.0
-- etc
+MongoDB installed and running.
 
-## Development
-
-### Installing Dependencies
+## Setup
 
 From within the root directory:
 
-```sh
+```
 npm install -g webpack
 npm install
 ```
 
+Create an .ENV file with the information required in the .ENV-EXAMPLE file, then:
+
+```
+npm run seed
+```
+
+You may receive an error if you did not already have a collection with that name. This is normal! The data still loads.
+
+If in production, change the ```webpack.config.js``` and ```package.json``` client script to reflect that.
+
+## Usage
+
+After going through all the steps described in Setup, run:
+
+```
+npm run client
+npm start
+```
+
+## Development
+
+To run the server where it will hot-reload, start it with
+
+```
+npm run start:dev
+```
