@@ -59,3 +59,10 @@ To run the server where it will hot-reload, start it with
 ```
 npm run start:dev
 ```
+## CRUD Operations
+| HTTP Verb |           Endpoint          |            Action            |
+|-----------| --------------------------- | ---------------------------- |
+| **POST**  |       /api/items/:id        |  CREATE a new item into DB   |
+| **GET**   |       /api/items/:id        |  READ data and return data   |
+| **PATCH** |       /api/items/:id        |  UPDATE item with new image  |
+| **DELETE**|       /api/items/:id        |  DELETE item based on ID     |
