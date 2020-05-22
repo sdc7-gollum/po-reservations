@@ -4,6 +4,7 @@ const csvWriter = require('csv-write-stream');
 const writer = csvWriter();
 
 const dataGenerator = () => {
+  console.time('finished in');
   writer.pipe(fs.createWriteStream('./server/database/data.csv'));
   for (let i = 1; i <= 10000000; i += 1) {
     writer.write({
@@ -18,7 +19,7 @@ const dataGenerator = () => {
     });
   }
   writer.end();
-  console.log('finished!');
+  console.timeEnd('finished in');
 };
 
 dataGenerator();
