@@ -1,9 +1,10 @@
 /* eslint-disable no-console */
 
+require('newrelic');
 require('dotenv').config();
 const path = require('path');
 const express = require('express');
-const { Room } = require('./database.js');
+const { Room } = require('./database/database.js');
 
 const app = express();
 
@@ -13,12 +14,12 @@ app.use(express.urlencoded());
 
 app.route('/api/room/:id')
   .get((req, res) => {
-    Room.findOne({ id: req.params.id }, (err, record) => {
+    Room.get(Number(req.params.id), (err, record) => {
       if (err) {
-        // console.log('Retrieval error:', err);
+        console.log('Retrieval error:', err);
         res.sendStatus(500);
       }
-      res.status(200).send(record);
+      res.status(200).send(record.rows[0]);
     });
   })
   .post((req, res) => {

@@ -1,40 +1,22 @@
-/* eslint-disable no-console */
+const { Client } = require('pg');
 
-require('dotenv').config();
-const mongoose = require('mongoose');
-
-mongoose.connect(`mongodb://${process.env.DB_HOST}:${process.env.DB_PORT}/fec`, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-})
-  .catch(() => {
-    // console.error.bind(console, 'connection error:', err);
-  });
-
-const db = mongoose.connection;
-
-const roomSchema = {
-  id: {
-    type: Number,
-    index: true,
-    unique: true,
-  },
-  reviewScore: String,
-  reviews: Number,
-  price: Number,
-  cleaning: Number,
-  service: Number,
-  tax: Number,
-  maxGuests: Number,
-};
-
-const Room = mongoose.model('Room', roomSchema);
-
-// db.on('error', console.error.bind(console, 'connection error:'));
-
-db.once('open', () => {
-  // console.log('Database connection opened!');
+const db = new Client({
+  user: 'Max',
+  host: 'localhost',
+  database: 'sdc',
+  port: 5432,
 });
+
+db.connect((err) => {
+  if (err) console.error(err);
+  else console.log('connection successful');
+});
+
+const Room = {};
+
+Room.get = (id, cb) => {
+  db.query(`select * from reservations where id = ${id}`, cb);
+};
 
 module.exports = {
   db,

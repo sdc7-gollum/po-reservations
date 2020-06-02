@@ -1,0 +1,16 @@
+config:
+  processor: './stressTestFunc.js'
+  target: 'http://localhost:9001'
+  http:
+    pool: 10
+  phases:
+    - duration: 1
+      arrivalRate: 10
+      maxVusers: 100
+scenarios:
+  - flow:
+     - loop:
+       - function: 'getRandomPage'
+       - get:
+            url: "/api/room/{{id}}"
+            count: 100
